@@ -32,7 +32,7 @@ set(SRB2_SDL2_SOURCES
 	hwsym_sdl.c
 	i_main.c
 	i_net.c
-	i_system.c
+	i_system.cpp
 	i_ttf.c
 	i_video.c
 	i_threads.c
@@ -135,6 +135,8 @@ if(${SDL2_FOUND})
 
 	add_executable(SRB2SDL2 MACOSX_BUNDLE WIN32 ${SRB2_SDL2_TOTAL_SOURCES})
 	set_target_properties(SRB2SDL2 PROPERTIES OUTPUT_NAME ${SRB2_SDL2_EXE_NAME})
+
+	target_compile_features(SRB2SDL2 PRIVATE c_std_23 cxx_std_17)
 
 	if(${CMAKE_SYSTEM} MATCHES Darwin)
 		find_library(CORE_FOUNDATION_LIBRARY "CoreFoundation")
